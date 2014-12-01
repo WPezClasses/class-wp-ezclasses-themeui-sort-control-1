@@ -40,10 +40,10 @@ if (! class_exists('Class_WP_ezClasses_ThemeUI_Sort_Control_1') ) {
 			parent::__construct();
 		}
 		
-		public function ezc_init($arr_args = NULL){
+		public function ez__construct($arr_args = NULL){
 		
 		  $arr_init_defaults = $this->init_defaults();
-		  $this->_arr_init = WP_ezMethods::ez_array_merge(array($arr_init_defaults, $arr_args));
+		  $this->_arr_init = WPezHelpers::ez_array_merge(array($arr_init_defaults, $arr_args));
 		  
 		  $this->_str_orderby_default = $arr_args['orderby'];
 		  $this->_str_order_default = strtoupper($arr_args['order']);
@@ -86,7 +86,7 @@ if (! class_exists('Class_WP_ezClasses_ThemeUI_Sort_Control_1') ) {
 		public function sort_validate($arr_args = ''){
 			
 
-				if ( ! WP_ezMethods::array_pass($arr_args) ){
+				if ( ! WPezHelpers::ez_array_pass($arr_args) ){
 					return array('status' => false, 'msg' => 'ERROR: arr_args[] ! is_array() || empty()', 'source' => get_class(), 'arr_args' => 'error');
 				}
 				
@@ -180,12 +180,12 @@ if (! class_exists('Class_WP_ezClasses_ThemeUI_Sort_Control_1') ) {
 		    $bool_echo = $arr_args['echo'];
 		  }
 
-		  $bool_validate = $this->_arr_init['validate'];
-		  if ( isset($arr_args['validate']) && is_bool($arr_args['validate']) ){
-		    $bool_validate = $arr_args['validate'];
+		  $bool_validate = $this->_arr_init['validation'];
+		  if ( isset($arr_args['validation']) && is_bool($arr_args['validation']) ){
+		    $bool_validate = $arr_args['validation'];
 		  }
 			
-			if ( ! WP_ezMethods::array_pass($arr_args) ){
+			if ( ! WPezHelpers::ez_array_pass($arr_args) ){
 				$arr_args = $this->sort_defaults();
 			} else {
 			
@@ -193,11 +193,11 @@ if (! class_exists('Class_WP_ezClasses_ThemeUI_Sort_Control_1') ) {
 				// pull the labels out and merge them first (since they are an array within an array
 				$arr_args_labels = $arr_defaults['labels'];
 					
-				if ( WP_ezMethods::array_pass($arr_args['labels']) ){
+				if ( WPezHelpers::ez_array_pass($arr_args['labels']) ){
 					$arr_args_labels = array_merge($arr_defaults['labels'], $arr_args['labels']);
 				}
 				
-				$arr_args = WP_ezMethods::ez_array_merge(array($arr_defaults, $arr_args));
+				$arr_args = WPezHelpers::ez_array_merge(array($arr_defaults, $arr_args));
 				// now put the labels in place since the all array_merge won't array_merge the labels arr
 				$arr_args['labels'] = $arr_args_labels;
 				
@@ -312,7 +312,7 @@ if (! class_exists('Class_WP_ezClasses_ThemeUI_Sort_Control_1') ) {
 			 */			
 			if ( $this->_arr_init['filters'] ){
 				$arr_defaults_via_filter = apply_filters('filter_ezc_themeui_sort_control_1_labels_defaults', $arr_defaults_labels);
-				$arr_defaults_labels = WP_ezMethods::_ez_array_merge(array($arr_defaults_labels, $arr_defaults_via_filter));
+				$arr_defaults_labels = WPezHelpers::ez_array_merge(array($arr_defaults_labels, $arr_defaults_via_filter));
 			}
 			
 			/*
@@ -320,7 +320,7 @@ if (! class_exists('Class_WP_ezClasses_ThemeUI_Sort_Control_1') ) {
 			 */			
 			if ( $this->_arr_init['filters'] ){
 				$arr_defaults_via_filter = apply_filters('filter_ezc_themeui_sort_control_1_defaults', $arr_defaults);
-				$arr_defaults_labels = WP_ezMethods::_ez_array_merge(array($arr_defaults, $arr_defaults_via_filter));
+				$arr_defaults_labels = WPezHelpers::ez_array_merge(array($arr_defaults, $arr_defaults_via_filter));
 			}
 			
 			$arr_defaults['labels'] = $arr_defaults_labels;
