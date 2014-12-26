@@ -1,6 +1,6 @@
-<?
+<?php
 /** 
- * For rendering (blog post) simple next / previous contols
+ * For rendering (blog post) sort controls
  *
  * This is NOT paging in a here's a list of pages sense. This is simply Next and Previous.
  *
@@ -14,19 +14,17 @@
  * @license TODO
  */
  
- /*
+/**
  * == Change Log == 
  *
  * --- 
-*/
+ */
 
 if ( !defined('ABSPATH') ) {
 	header('HTTP/1.0 403 Forbidden');
     die();
 }
-?>
 
-<?php
 if (! class_exists('Class_WP_ezClasses_ThemeUI_Sort_Control_1') ) {
   class Class_WP_ezClasses_ThemeUI_Sort_Control_1 extends Class_WP_ezClasses_Master_Singleton {
   
