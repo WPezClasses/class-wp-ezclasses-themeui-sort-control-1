@@ -221,7 +221,7 @@ if (! class_exists('Class_WP_ezClasses_ThemeUI_Sort_Control_1') ) {
 			$str_order = '';
 			if ( isset($wp_query->query_vars['orderby']) && isset($wp_query->query_vars['order']) ) {
 				$str_orderby = strtolower($wp_query->query_vars['orderby']);
-				$str_order = strtoupper($wp_query->query_vars['order']);					
+				$str_order = strtolower($wp_query->query_vars['order']);					
 			}
 			
 			$str_search_term = get_query_var('s');
